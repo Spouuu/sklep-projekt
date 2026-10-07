@@ -1,9 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ProductList } from './product-list/product-list';
+import { Cart } from './cart/cart';
 
 @Component({
-  imports: [RouterOutlet, ProductList],
+  imports: [RouterOutlet, ProductList, Cart],
   selector: 'app-root',
   styleUrl: './app.scss',
   templateUrl: './app.html',
@@ -11,6 +12,8 @@ import { ProductList } from './product-list/product-list';
 
 
 export class App {
+  cartProducts : any[]= [];
+
   products = [
     { id: 1, name: 'Klawiatura', price: 199 },
     { id: 2, name: 'Mysz', price: 99 },
@@ -19,6 +22,7 @@ export class App {
   ];
 
   addProductsToCard(product:any){
-    console.log(this.products)
+    this.cartProducts.push(product);
+    console.log(this.cartProducts);
   }
 }

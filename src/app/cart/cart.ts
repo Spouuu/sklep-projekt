@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   imports: [],
@@ -6,4 +6,6 @@ import { Component } from '@angular/core';
   styleUrl: './cart.scss',
   templateUrl: './cart.html',
 })
-export class Cart {}
+export class Cart {
+  @Input() cart : any[] = [];
+}

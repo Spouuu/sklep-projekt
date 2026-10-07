@@ -1,1 +1,3 @@
-<p>cart works!</p>
+@for (product of cart; track product.id){
+    <p>{{product.id}}, {{product.name}}, {{product.price}}</p>
+}

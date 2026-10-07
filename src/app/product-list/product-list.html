@@ -1,3 +1,3 @@
 @for (product of products; track product.id){
-    <app-product-item [product]="product" (addToCard)="dodajDoKoszyka($event)"></app-product-item>
+    <app-product-item [product]="product" (addToCard)="onAddToCart($event)"></app-product-item>
 }

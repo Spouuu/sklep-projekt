@@ -10,7 +10,7 @@ import { ProductItem } from '../product-item/product-item';
 export class ProductList {
   @Input() products : any[] = [];
   @Output() addToCard = new EventEmitter<any>();
-  dodajDoKoszyka(product:any){
+  onAddToCart(product:any){
     this.addToCard.emit(product);
   }
 }
