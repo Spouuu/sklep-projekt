@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   imports: [],
@@ -8,4 +8,8 @@ import { Component, Input } from '@angular/core';
 })
 export class ProductItem {
   @Input() product: any;
+  @Output() addToCard = new EventEmitter<any>();
+  dodajDoKoszyka(){
+    this.addToCard.emit(this.product);
+  }
 }
