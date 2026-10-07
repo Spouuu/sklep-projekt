@@ -7,6 +7,8 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.scss',
   templateUrl: './app.html',
 })
+
+
 export class App {
   products = [
     { id: 1, name: 'Klawiatura', price: 199 },
