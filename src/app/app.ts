@@ -13,6 +13,8 @@ import { Cart } from './cart/cart';
 
 export class App {
   cartProducts : any[]= [];
+  amount = 0;
+  total = 0;
 
   products = [
     { id: 1, name: 'Klawiatura', price: 199 },
@@ -22,7 +24,12 @@ export class App {
   ];
 
   addProductsToCard(product:any){
-    this.cartProducts.push(product);
+    this.amount = this.amount + 1;
+    this.cartProducts = [...this.cartProducts,product];
     console.log(this.cartProducts);
+  }
+
+  getTotal(product: any){
+    this.total = product.price;
   }
 }
