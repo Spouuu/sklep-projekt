@@ -1,5 +1,9 @@
 <h1>Koszyk</h1>
 @for (product of cart; track product.id){
-    <p>{{product.id}}, {{product.name}}, {{product.price}}</p>
+    <p>{{product.id}}, {{product.name}}, {{product.price}} <button (click)="onDeleteProductFromCard(product)">usun z koszyka</button></p>
 }
-<h3>Razem: {{total}}</h3>
+@if(getTotal() == 0){
+    <h3><strong>KOSZYK JEST PUSTY</strong></h3>
+}@else{
+    <h3>Razem: {{getTotal()}}</h3>
+}

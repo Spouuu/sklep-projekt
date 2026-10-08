@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   imports: [],
@@ -7,5 +7,20 @@ import { Component, Input } from '@angular/core';
   templateUrl: './cart.html',
 })
 export class Cart {
-  @Input() cart : any[] = [];
+  @Input() cart: any[] = [];
+  @Output() deleteProductFromCard = new EventEmitter<any>();
+  getTotal() {
+    let total = 0;
+
+    for (let i = 0; i < this.cart.length; i++) {
+      total += this.cart[i].price;
+    }
+    if(this.cart.length != 0){
+      return total;
+    }
+    return 0;
+  }
+  onDeleteProductFromCard(product:any){
+    this.deleteProductFromCard.emit(product)
+  }
 }

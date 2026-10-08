@@ -15,6 +15,7 @@ export class App {
   cartProducts : any[]= [];
   amount = 0;
   total = 0;
+  i = 0;
 
   products = [
     { id: 1, name: 'Klawiatura', price: 199 },
@@ -29,7 +30,9 @@ export class App {
     console.log(this.cartProducts);
   }
 
-  getTotal(product: any){
-    this.total = product.price;
+  deleteProductFromCard(product:any){
+    let index = this.cartProducts.indexOf(product);
+    this.cartProducts.splice(index, 1);
+    console.log(this.cartProducts);
   }
 }
