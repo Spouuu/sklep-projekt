@@ -25,8 +25,13 @@ export class App {
   ];
 
   addProductsToCard(product:any){
-    this.amount = this.amount + 1;
-    this.cartProducts = [...this.cartProducts,product];
+    const existingProduct = this.cartProducts.find((item) => item.product.id === product.id);
+
+    if(existingProduct){
+      this.cartProducts = this.cartProducts.map((item) => item.product.id === product.id ? {...item, amount: item.amount + 1 } : item)
+    } else{
+      this.cartProducts = [...this.cartProducts,{product, amount: 1}];
+    }
     console.log(this.cartProducts);
   }
 

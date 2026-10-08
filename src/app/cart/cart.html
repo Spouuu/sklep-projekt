@@ -1,6 +1,6 @@
 <h1>Koszyk</h1>
-@for (product of cart; track product.id){
-    <p>{{product.id}}, {{product.name}}, {{product.price}} <button (click)="onDeleteProductFromCard(product)">usun z koszyka</button></p>
+@for (item of cart; track item.product.id){
+    <p>{{item.product.id}}, {{item.product.name}}, {{item.product.price}} ILOSC: {{item.amount}} <button (click)="onDeleteProductFromCard(item.product)">usun z koszyka</button></p>
 }
 @if(getTotal() == 0){
     <h3><strong>KOSZYK JEST PUSTY</strong></h3>
