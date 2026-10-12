@@ -1,3 +1,4 @@
+
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ProductItem } from '../product-item/product-item';
 
@@ -8,9 +9,11 @@ import { ProductItem } from '../product-item/product-item';
   templateUrl: './product-list.html',
 })
 export class ProductList {
-  @Input() products : any[] = [];
+  @Input() products: any[] = [];
+
   @Output() addToCard = new EventEmitter<any>();
-  onAddToCart(product:any){
+
+  onAddToCart(product: any) {
     this.addToCard.emit(product);
   }
 }

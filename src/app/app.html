@@ -1,3 +1,8 @@
-<app-product-list [products]="products" (addToCard)="addProductsToCard($event)"></app-product-list>
+<nav>
+  <a routerLink="/">Strona główna</a>
+  <a routerLink="/cart">Koszyk</a>
+  <a routerLink="/payment">Płatność</a>
+</nav>
+
 <hr>
-<app-cart [cart]="cartProducts" (deleteProductFromCard)="deleteProductFromCard($event)"></app-cart>
+<router-outlet></router-outlet>

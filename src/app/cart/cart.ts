@@ -13,7 +13,7 @@ export class Cart {
     let total = 0;
 
     for (let i = 0; i < this.cart.length; i++) {
-      total += this.cart[i].price;
+      total += this.cart[i].product.price * this.cart[i].amount;
     }
     if(this.cart.length != 0){
       return total;
