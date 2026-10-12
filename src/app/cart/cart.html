@@ -1,9 +1,29 @@
 <h1>Koszyk</h1>
-@for (item of cart; track item.product.id){
-    <p>{{item.product.id}}, {{item.product.name}}, {{item.product.price}} ILOSC: {{item.amount}} <button (click)="onDeleteProductFromCard(item.product)">usun z koszyka</button></p>
-}
-@if(getTotal() == 0){
-    <h3><strong>KOSZYK JEST PUSTY</strong></h3>
-}@else{
-    <h3>Razem: {{getTotal()}}</h3>
+
+@if (cart.length === 0) {
+  <h3>Koszyk jest pusty</h3>
+} @else {
+  @for (item of cart; track item.product.id) {
+    <div class="cart-item">
+      <h3>{{ item.product.name }}</h3>
+
+      <p>Cena: {{ item.product.price }} zł</p>
+
+      <button (click)="decrease(item)">-</button>
+
+      <span>{{ item.amount }}</span>
+
+      <button (click)="increase(item)">+</button>
+
+      <p>
+        Razem za produkt:
+        {{ item.product.price * item.amount }} zł
+      </p>
+      <button (click)="onDeleteProductFromCard(item)">
+  Usuń z koszyka
+</button>
+    </div>
+  }
+
+  <h2>Łącznie: {{ getTotal() }} zł</h2>
 }

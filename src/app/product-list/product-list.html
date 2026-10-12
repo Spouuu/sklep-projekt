@@ -1,6 +1,8 @@
 @for (product of products; track product.id) {
-  <app-product-item
-    [products]="product"
-    (addToCard)="onAddToCart($event)">
-  </app-product-item>
+  <a [routerLink]="['/product', product.id]">
+    <app-product-item
+      [products]="product"
+      (addToCard)="onAddToCart($event)">
+    </app-product-item>
+  </a>
 }

@@ -1,26 +1,41 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
-  imports: [],
   selector: 'app-cart',
-  styleUrl: './cart.scss',
+  imports: [],
   templateUrl: './cart.html',
+  styleUrl: './cart.scss'
 })
 export class Cart {
   @Input() cart: any[] = [];
-  @Output() deleteProductFromCard = new EventEmitter<any>();
-  getTotal() {
+
+  increase(item: any) {
+    item.amount++;
+  }
+
+  decrease(item: any) {
+    if (item.amount > 1) {
+      item.amount--;
+    } else {
+      this.cart = this.cart.filter(
+        product => product.product.id !== item.product.id
+      );
+    }
+  }
+
+  onDeleteProductFromCard(item: any) {
+  this.cart = this.cart.filter(
+    product => product.product.id !== item.product.id
+  );
+}
+
+  getTotal(): number {
     let total = 0;
 
-    for (let i = 0; i < this.cart.length; i++) {
-      total += this.cart[i].product.price * this.cart[i].amount;
+    for (const item of this.cart) {
+      total += item.product.price * item.amount;
     }
-    if(this.cart.length != 0){
-      return total;
-    }
-    return 0;
-  }
-  onDeleteProductFromCard(product:any){
-    this.deleteProductFromCard.emit(product)
+
+    return total;
   }
 }
