@@ -1,12 +1,11 @@
-
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ProductItem } from '../product-item/product-item';
 
 @Component({
-  imports: [ProductItem],
   selector: 'app-product-list',
-  styleUrl: './product-list.scss',
+  imports: [ProductItem],
   templateUrl: './product-list.html',
+  styleUrl: './product-list.scss',
 })
 export class ProductList {
   @Input() products: any[] = [];

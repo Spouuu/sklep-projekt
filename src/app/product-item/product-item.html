@@ -1,1 +1,6 @@
-<p>{{product.id}} {{product.name}} {{product.price}} <button (click)="dodajDoKoszyka()">dodaj do koszyka</button></p>
+<h3>{{ products.name }}</h3>
+<p>Cena: {{ products.price }} zł</p>
+
+<button (click)="addProduct()">
+  Dodaj do koszyka
+</button>

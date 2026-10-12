@@ -1,15 +1,17 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  imports: [],
   selector: 'app-product-item',
-  styleUrl: './product-item.scss',
+  imports: [],
   templateUrl: './product-item.html',
+  styleUrl: './product-item.scss',
 })
 export class ProductItem {
-  @Input() product: any;
+  @Input() products: any;
+
   @Output() addToCard = new EventEmitter<any>();
-  dodajDoKoszyka(){
-    this.addToCard.emit(this.product);
+
+  addProduct() {
+    this.addToCard.emit(this.products);
   }
 }

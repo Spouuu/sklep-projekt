@@ -1,10 +1,6 @@
-<h1>Sklep internetowy</h1>
-
+<h2>Nasze produkty</h2>
 
 <app-product-list
   [products]="products"
-  (addToCard)="onAddProductsToCard.emit($event)">
+  (addToCard)="addToCard.emit($event)">
 </app-product-list>
-
-
-<button routerLink="/cart">Przejdź do koszyka</button>
