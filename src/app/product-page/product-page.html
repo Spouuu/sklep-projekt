@@ -9,6 +9,9 @@
     <h2>{{ product.price }} zł</h2>
     <p>{{ product.description }}</p>
     <p>Ocena: {{ product.rating }} / 5</p>
+    <button (click)="addToCart()">
+  Dodaj do koszyka
+</button>
 
     <a routerLink="/cart">Przejdź do koszyka</a>
   </div>
@@ -16,12 +19,16 @@
 
 <h2>Pozostałe produkty</h2>
 
+
 <div class="carousel">
   @for (item of otherProducts; track item.id) {
-    <a [routerLink]="['/product', item.id]" class="carousel-item">
-      <img [src]="item.image" [alt]="item.name">
-      <h3>{{ item.name }}</h3>
-      <p>{{ item.price }} zł</p>
-    </a>
+    <div class="carousel-item">
+      <a [routerLink]="['/product', item.id]">
+        <img [src]="item.image" [alt]="item.name">
+        <h3>{{ item.name }}</h3>
+        <p>{{ item.price }} zł</p>
+      </a>
+    </div>
   }
 </div>
+

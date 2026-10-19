@@ -1,29 +1,32 @@
-<h1>Koszyk</h1>
+
+<h2>Koszyk</h2>
 
 @if (cart.length === 0) {
-  <h3>Koszyk jest pusty</h3>
+  <h3>KOSZYK JEST PUSTY</h3>
 } @else {
   @for (item of cart; track item.product.id) {
-    <div class="cart-item">
-      <h3>{{ item.product.name }}</h3>
-
-      <p>Cena: {{ item.product.price }} zł</p>
-
-      <button (click)="decrease(item)">-</button>
-
-      <span>{{ item.amount }}</span>
-
-      <button (click)="increase(item)">+</button>
-
+    <div>
       <p>
-        Razem za produkt:
-        {{ item.product.price * item.amount }} zł
+        {{ item.product.name }} -
+        {{ item.product.price }} zł
       </p>
-      <button (click)="onDeleteProductFromCard(item)">
-  Usuń z koszyka
-</button>
+
+      <button (click)="onChangeAmount(item.product, -1)">
+        -
+      </button>
+
+      {{ item.amount }}
+
+      <button (click)="onChangeAmount(item.product, 1)">
+        +
+      </button>
+
+      <button (click)="onDeleteProductFromCard(item.product)">
+        Usuń
+      </button>
     </div>
   }
-
-  <h2>Łącznie: {{ getTotal() }} zł</h2>
 }
+
+<h3>Razem: {{ getTotal() }} zł</h3>
+

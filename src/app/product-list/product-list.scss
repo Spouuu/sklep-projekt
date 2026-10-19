@@ -1,0 +1,11 @@
+:host {
+  display: block;
+}
+
+app-product-item {
+  display: inline-block; width: 200px; margin: 10px; vertical-align: top;
+}
+
+img {
+  display: block; width: 150px; height: 150px; margin: 0 auto; object-fit: contain;
+}

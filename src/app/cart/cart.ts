@@ -1,4 +1,6 @@
-import { Component, Input } from '@angular/core';
+
+import { Component } from '@angular/core';
+import { ShopService } from '../shop';
 
 @Component({
   selector: 'app-cart',
@@ -7,35 +9,21 @@ import { Component, Input } from '@angular/core';
   styleUrl: './cart.scss'
 })
 export class Cart {
-  @Input() cart: any[] = [];
+  constructor(public shopService: ShopService) {}
 
-  increase(item: any) {
-    item.amount++;
+  get cart() {
+    return this.shopService.getCart();
   }
 
-  decrease(item: any) {
-    if (item.amount > 1) {
-      item.amount--;
-    } else {
-      this.cart = this.cart.filter(
-        product => product.product.id !== item.product.id
-      );
-    }
+  getTotal() {
+    return this.shopService.getTotal();
   }
 
-  onDeleteProductFromCard(item: any) {
-  this.cart = this.cart.filter(
-    product => product.product.id !== item.product.id
-  );
-}
+  onDeleteProductFromCard(product: any) {
+    this.shopService.removeFromCart(product.id);
+  }
 
-  getTotal(): number {
-    let total = 0;
-
-    for (const item of this.cart) {
-      total += item.product.price * item.amount;
-    }
-
-    return total;
+  onChangeAmount(product: any, change: number) {
+    this.shopService.changeAmount(product.id, change);
   }
 }

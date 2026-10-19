@@ -1,5 +1,6 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 import { ProductList } from '../product-list/product-list';
+import { ShopService } from '../shop';
 
 @Component({
   selector: 'app-home',
@@ -8,11 +9,13 @@ import { ProductList } from '../product-list/product-list';
   styleUrl: './home.scss'
 })
 export class Home {
-  @Input() products: any[] = [];
+  products: any[];
 
-  @Output() addToCard = new EventEmitter<any>();
+  constructor(private shopService: ShopService) {
+    this.products = this.shopService.getProducts();
+  }
 
   onAddToCart(product: any) {
-    this.addToCard.emit(product);
+    this.shopService.addToCart(product);
   }
 }
