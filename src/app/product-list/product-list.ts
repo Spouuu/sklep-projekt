@@ -9,7 +9,8 @@ import { ProductItem } from '../product-item/product-item';
   styleUrl: './product-list.scss'
 })
 export class ProductList {
-    products = [
+  
+  products = [
   {
     id: 1,
     name: 'Klawiatura',
