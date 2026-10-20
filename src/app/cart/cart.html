@@ -11,13 +11,13 @@
         {{ item.product.price }} zł
       </p>
 
-      <button (click)="onChangeAmount(item.product, -1)">
+      <button (click)="onChangeAmount(item.product, -1)" class="amount">
         -
       </button>
 
       {{ item.amount }}
 
-      <button (click)="onChangeAmount(item.product, 1)">
+      <button (click)="onChangeAmount(item.product, 1)"class="amount">
         +
       </button>
 
@@ -28,5 +28,5 @@
   }
 }
 
-<h3>Razem: {{ getTotal() }} zł</h3>
+<h3 class="razem">Razem: {{ getTotal() }} zł</h3>
 

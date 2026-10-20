@@ -1,6 +1,7 @@
 
-import { Component } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import InnerImageZoom from 'inner-image-zoom';
 import { ShopService } from '../shop';
 
 @Component({
@@ -9,9 +10,12 @@ import { ShopService } from '../shop';
   templateUrl: './product-page.html',
   styleUrl: './product-page.scss'
 })
-export class ProductPage {
+export class ProductPage implements AfterViewInit, OnDestroy {
+
   products: any[] = [];
   product: any;
+
+  zoom: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,6 +30,13 @@ export class ProductPage {
     });
   }
 
+  ngAfterViewInit() {
+    this.zoom = new InnerImageZoom('.iiz', {
+      zoomType: 'click',
+      zoomScale: 1
+    });
+  }
+
   addToCart() {
     if (this.product) {
       this.shopService.addToCart(this.product);
@@ -36,5 +47,9 @@ export class ProductPage {
     return this.products.filter(
       p => p.id !== this.product?.id
     );
+  }
+
+  ngOnDestroy() {
+    this.zoom?.uninit();
   }
 }

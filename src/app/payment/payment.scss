@@ -1,0 +1,11 @@
+* {
+  font-family: Georgia, 'Times New Roman', Times, serif; text-align: center; text-decoration: none; color: rgb(111, 146, 129);
+}
+
+button {
+  border: 1px black solid; border-radius: 0%; margin: 10px; color: rgb(58, 98, 85); background-color: rgb(125, 164, 141); transition: 0.5s ease-in-out;
+}
+
+button:hover {
+  background-color: rgb(154, 206, 178); transform: scale(1.2); cursor: pointer;
+}
