@@ -1,23 +1,108 @@
+
 <h1>Płatność</h1>
 
-<form (ngSubmit)="pay()">
+<form [formGroup]="paymentForm" (ngSubmit)="pay()">
+
+  <h2>Dane do zamówienia</h2>
+
   <label>
-    Imię i nazwisko:
-    <input name="name" required>
+    Imię:
+    <input type="text" formControlName="firstName">
   </label>
 
+  @if (paymentForm.controls.firstName.touched &&
+       paymentForm.controls.firstName.invalid) {
+    <p class="error">Podaj imię.</p>
+  }
   <br>
+  <label>
+    Nazwisko:
+    <input type="text" formControlName="lastName">
+  </label>
 
+  @if (paymentForm.controls.lastName.touched &&
+       paymentForm.controls.lastName.invalid) {
+    <p class="error">Podaj nazwisko.</p>
+  }
+<br>
+  <label>
+    Adres:
+    <input type="text" formControlName="address">
+  </label>
+
+  @if (paymentForm.controls.address.touched &&
+       paymentForm.controls.address.invalid) {
+    <p class="error">Podaj adres.</p>
+  }
+<br>
   <label>
     E-mail:
-    <input name="email" type="email" required>
+    <input type="email" formControlName="email">
   </label>
 
-  <br>
+  @if (paymentForm.controls.email.touched &&
+       paymentForm.controls.email.invalid) {
+    <p class="error">Podaj poprawny adres e-mail.</p>
+  }
+<br>
+  <h2>Forma płatności</h2>
+
+  <label>
+    <input type="radio"
+           formControlName="paymentMethod"
+           value="blik">
+    BLIK
+  </label>
+
+  <label>
+    <input type="radio"
+           formControlName="paymentMethod"
+           value="card">
+    Karta płatnicza
+  </label>
+
+  @if (paymentMethod === 'blik') {
+    <label>
+      Kod BLIK:
+      <input
+        type="text"
+        formControlName="blikCode"
+        maxlength="6"
+        inputmode="numeric">
+    </label>
+  }
+
+  @if (paymentMethod === 'card') {
+    <label>
+      Numer karty:
+      <input
+        type="text"
+        formControlName="cardNumber"
+        maxlength="16"
+        inputmode="numeric">
+    </label>
+  }
+<br>
+  <h2>Podsumowanie koszyka</h2>
+
+  @if (cart.length === 0) {
+    <p>Koszyk jest pusty.</p>
+  }
+
+  @for (item of cart; track item.product.id) {
+    <p>
+      {{ item.product.name }}
+      — {{ item.amount }} szt.
+      — {{ item.product.price * item.amount }} zł
+    </p>
+  }
+
+  <h3>Razem: {{ total }} zł</h3>
+
+  @if (errorMessage) {
+    <p class="error">{{ errorMessage }}</p>
+  }
 
   <button type="submit">Zapłać</button>
-</form>
 
-@if (errorMessage) {
-  <p class="error">{{ errorMessage }}</p>
-}
+</form>

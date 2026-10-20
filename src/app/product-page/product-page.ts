@@ -32,8 +32,10 @@ export class ProductPage implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {
     this.zoom = new InnerImageZoom('.iiz', {
-      zoomType: 'click',
-      zoomScale: 1
+      zoomScale: 0.9,
+  moveType: 'drag',
+  hideCloseButton: true,
+  hideHint: true
     });
   }
 

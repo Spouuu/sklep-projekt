@@ -9,3 +9,19 @@ button {
 button:hover {
   background-color: rgb(154, 206, 178); transform: scale(1.2); cursor: pointer;
 }
+
+.error {
+  text-decoration: underline; color: red;
+}
+
+input {
+  border: 2px rgb(53, 83, 53) solid; border-radius: 30px; transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+input[type="radio"] {
+  accent-color: #c8819f;
+}
+
+input:hover {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.236); transform: scale(1.01);
+}
